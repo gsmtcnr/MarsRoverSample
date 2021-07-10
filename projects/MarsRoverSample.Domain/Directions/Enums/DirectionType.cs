@@ -1,6 +1,6 @@
 ﻿namespace MarsRoverSample.Domain.Directions.Enums
 {
-    public enum Directions
+    public enum DirectionType
     {
         /// <summary>
         /// North

@@ -1,12 +1,15 @@
 ﻿using MarsRoverSample.Domain.Directions;
 using MarsRoverSample.Domain.Plateaus;
+using MarsRoverSample.Domain.Results;
 using MarsRoverSample.Domain.Rovers.Enums;
+using System.Collections.Generic;
 
 namespace MarsRoverSample.Domain.Rovers
 {
     public interface IRover
     {
         #region Properties
+        public string Name { get; set; }
         IPlateau Plateau { get; set; }
         IDirection Direction { get; set; }
         public void SetCurrentX(int coordinate);
@@ -16,7 +19,9 @@ namespace MarsRoverSample.Domain.Rovers
         #endregion
 
         #region Methods
-        void ExecuteCommand(CommandType commandType);
+        IResult ExecuteCommand(List<CommandType> commandTypes);
+        string ReportLocation();
+        IResult CoordinateControl();
         #endregion
     }
 }

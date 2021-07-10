@@ -4,6 +4,10 @@ namespace MarsRoverSample.Domain.Directions
 {
     public class SouthDirection : BaseDirection, IDirection
     {
+        public SouthDirection()
+        {
+            SetCurrentDirectionType(Enums.DirectionType.S);
+        }
         public override IDirection Left()
         {
             return new EastDirection();
@@ -12,9 +16,9 @@ namespace MarsRoverSample.Domain.Directions
         {
             return new WestDirection();
         }
-        public override void Move(IRover rover)
+        public override void MoveOn(IRover rover)
         {
-            rover.SetCurrentY(rover.CurrentY--);
+            rover.SetCurrentY(rover.CurrentY - 1);
         }
     }
 }

@@ -4,7 +4,8 @@ namespace MarsRoverSample.Domain.Positions
 {
     public abstract class BasePosition : IPosition
     {
-        public BasePosition(int lowerCoordinateForX, int lowerCoordinateForY, int upperCoordinateForX, int upperCoordinateForY)
+        public BasePosition(int lowerCoordinateForX, int lowerCoordinateForY, 
+            int upperCoordinateForX, int upperCoordinateForY)
         {
             LowerCoordinateForX = lowerCoordinateForX;
             LowerCoordinateForY = lowerCoordinateForY;
