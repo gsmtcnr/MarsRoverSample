@@ -5,6 +5,7 @@ using Xunit;
 
 namespace MarsRoverSample.UnitTests
 {
+
     public class PlateauUnitTests
     {
         [Fact]
@@ -44,7 +45,7 @@ namespace MarsRoverSample.UnitTests
 
             plateauResult.IsSuccess.ShouldBeFalse();
             plateauResult.ErrorMessages.ShouldNotBeNull();
-  
+
         }
     }
 }
