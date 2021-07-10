@@ -35,7 +35,7 @@ namespace MarsRoverSample.ConsoleApp
                         {
                             if (count % 2 == 0)
                             {
-                                //1 2 N
+
                                 var roverInformation = line.Split(' ');
                                 int x = Convert.ToInt32(roverInformation[0]);
                                 int y = Convert.ToInt32(roverInformation[1]);
@@ -56,8 +56,16 @@ namespace MarsRoverSample.ConsoleApp
                                 {
                                     var rover = roverResult.Data;
                                     var commandTypes = CreateCommandTypes(line);
-                                    rover.ExecuteCommand(commandTypes);
-                                    Console.WriteLine(rover.ReportLocation());
+                                    var executeResult = rover.ExecuteCommand(commandTypes);
+                                    if (executeResult.IsSuccess)
+                                    {
+                                        Console.WriteLine(rover.ReportLocation());
+                                    }
+                                    else
+                                    {
+                                        HandleErrorMessages(executeResult.ErrorMessages);
+                                    }
+                                 
                                 }
                                 else
                                 {
@@ -74,105 +82,6 @@ namespace MarsRoverSample.ConsoleApp
                     }
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //Input 5 5
-            //var plateauResult = Plateau.Create(new Position(0, 0, 5, 5));
-
-            //if (plateauResult.IsSuccess)
-            //{
-            //    var plateau = plateauResult.Data;
-
-            //    var firstRoverResult = Rover.Create(new Domain.Rovers.Inputs.CreateInputModel
-            //    {
-            //        Name = "Elon Musk",
-            //        CoordinateX = 1,
-            //        CoordinateY = 2,
-            //        Direction = new NorthDirection(),
-            //        Plateau = plateau
-            //    });
-
-            //    var secondRoverResult = Rover.Create(new Domain.Rovers.Inputs.CreateInputModel
-            //    {
-            //        Name = "Bill Gates",
-            //        CoordinateX = 3,
-            //        CoordinateY = 3,
-            //        Direction = new EastDirection(),
-            //        Plateau = plateau
-            //    });
-
-            //    if (firstRoverResult.IsSuccess && secondRoverResult.IsSuccess)
-            //    {
-            //        var firstRover = firstRoverResult.Data;
-
-            //        firstRover.ExecuteCommand(new List<Domain.Rovers.Enums.CommandType>
-            //        {
-            //             Domain.Rovers.Enums.CommandType.L,
-            //             Domain.Rovers.Enums.CommandType.M,
-            //             Domain.Rovers.Enums.CommandType.L,
-            //             Domain.Rovers.Enums.CommandType.M,
-            //             Domain.Rovers.Enums.CommandType.L,
-            //             Domain.Rovers.Enums.CommandType.M,
-            //             Domain.Rovers.Enums.CommandType.L,
-            //             Domain.Rovers.Enums.CommandType.M,
-            //             Domain.Rovers.Enums.CommandType.M
-            //        });
-
-
-
-            //        var secondRever = secondRoverResult.Data;
-            //        secondRever.ExecuteCommand(new List<Domain.Rovers.Enums.CommandType> {
-
-            //            Domain.Rovers.Enums.CommandType.M,
-            //            Domain.Rovers.Enums.CommandType.M,
-            //            Domain.Rovers.Enums.CommandType.R,
-            //            Domain.Rovers.Enums.CommandType.M,
-            //            Domain.Rovers.Enums.CommandType.M,
-            //            Domain.Rovers.Enums.CommandType.R,
-            //            Domain.Rovers.Enums.CommandType.M,
-            //            Domain.Rovers.Enums.CommandType.R,
-            //            Domain.Rovers.Enums.CommandType.R,
-            //            Domain.Rovers.Enums.CommandType.M
-
-            //        });
-
-            //        Console.WriteLine(firstRover.ReportLocation());
-            //        Console.WriteLine(secondRever.ReportLocation());
-
-            //    }
-            //    else
-            //    {
-            //        HandleErrorMessages(firstRoverResult.ErrorMessages);
-            //        HandleErrorMessages(secondRoverResult.ErrorMessages);
-            //    }
-            //}
-            //else
-            //{
-            //    HandleErrorMessages(plateauResult.ErrorMessages);
-            //}
-
 
             Console.ReadLine();
         }

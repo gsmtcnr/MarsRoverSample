@@ -24,23 +24,23 @@ namespace MarsRoverSample.Domain.Rovers
             //X control
             if (CurrentX > plateauPosition.UpperCoordinateForX)
             {
-                return Result.Fail(string.Format(ValidationContants.Coordinate_OverValue, "X"));
+                return Result.Fail(string.Format(ValidationContants.Rover_Coordinate_OverValue, Name, "X"));
             }
 
             if (CurrentX < plateauPosition.LowerCoordinateForX)
             {
-                return Result.Fail(string.Format(ValidationContants.Coordinate_LowValue, "X"));
+                return Result.Fail(string.Format(ValidationContants.Rover_Coordinate_LowValue, Name, "X"));
             }
 
             //Y control
             if (CurrentY > plateauPosition.UpperCoordinateForY)
             {
-                return Result.Fail(string.Format(ValidationContants.Coordinate_OverValue, "Y"));
+                return Result.Fail(string.Format(ValidationContants.Rover_Coordinate_OverValue, Name, "Y"));
             }
 
             if (CurrentY < plateauPosition.LowerCoordinateForY)
             {
-                return Result.Fail(string.Format(ValidationContants.Coordinate_LowValue, "Y"));
+                return Result.Fail(string.Format(ValidationContants.Rover_Coordinate_LowValue, Name, "Y"));
             }
 
             return Result.Success();
