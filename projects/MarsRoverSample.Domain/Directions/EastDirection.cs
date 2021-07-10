@@ -1,5 +1,4 @@
-﻿using MarsRoverSample.Infrastructure.Results;
-using MarsRoverSample.Domain.Rovers;
+﻿using MarsRoverSample.Domain.Rovers;
 
 namespace MarsRoverSample.Domain.Directions
 {

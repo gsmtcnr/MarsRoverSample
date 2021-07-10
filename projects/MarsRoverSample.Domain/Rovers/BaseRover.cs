@@ -1,8 +1,8 @@
 ﻿using MarsRoverSample.Domain.Directions;
 using MarsRoverSample.Domain.Plateaus;
-using MarsRoverSample.Infrastructure.Results;
 using MarsRoverSample.Domain.Rovers.Enums;
-using MarsRoverSample.Domain.Rovers.Validations.Contants;
+using MarsRoverSample.Infrastructure.Results;
+using MarsRoverSample.Infrastructure.Validations;
 using System.Collections.Generic;
 
 namespace MarsRoverSample.Domain.Rovers
@@ -24,23 +24,23 @@ namespace MarsRoverSample.Domain.Rovers
             //X control
             if (CurrentX > plateauPosition.UpperCoordinateForX)
             {
-                return Result.Fail(string.Format(ValidationContants.Rover_Coordinate_OverValue, Name, "X"));
+                return Result.Fail(string.Format(ValidationConstant.Rover_Coordinate_OverValue, Name, "X"));
             }
 
             if (CurrentX < plateauPosition.LowerCoordinateForX)
             {
-                return Result.Fail(string.Format(ValidationContants.Rover_Coordinate_LowValue, Name, "X"));
+                return Result.Fail(string.Format(ValidationConstant.Rover_Coordinate_LowValue, Name, "X"));
             }
 
             //Y control
             if (CurrentY > plateauPosition.UpperCoordinateForY)
             {
-                return Result.Fail(string.Format(ValidationContants.Rover_Coordinate_OverValue, Name, "Y"));
+                return Result.Fail(string.Format(ValidationConstant.Rover_Coordinate_OverValue, Name, "Y"));
             }
 
             if (CurrentY < plateauPosition.LowerCoordinateForY)
             {
-                return Result.Fail(string.Format(ValidationContants.Rover_Coordinate_LowValue, Name, "Y"));
+                return Result.Fail(string.Format(ValidationConstant.Rover_Coordinate_LowValue, Name, "Y"));
             }
 
             return Result.Success();

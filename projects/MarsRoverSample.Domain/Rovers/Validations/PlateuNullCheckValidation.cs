@@ -1,6 +1,5 @@
-﻿using MarsRoverSample.Infrastructure.Results;
-using MarsRoverSample.Domain.Rovers.Inputs;
-using MarsRoverSample.Domain.Rovers.Validations.Contants;
+﻿using MarsRoverSample.Domain.Rovers.Inputs;
+using MarsRoverSample.Infrastructure.Results;
 using MarsRoverSample.Infrastructure.Validations;
 
 namespace MarsRoverSample.Domain.Rovers.Validations
@@ -11,7 +10,7 @@ namespace MarsRoverSample.Domain.Rovers.Validations
         {
             if (data.Plateau == null)
             {
-                return Result.Fail(ValidationContants.Plateu_Null);
+                return Result.Fail(ValidationConstant.Plateu_Null);
             }
             return Result.Success();
         }
