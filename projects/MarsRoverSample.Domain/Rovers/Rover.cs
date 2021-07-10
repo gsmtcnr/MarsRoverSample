@@ -1,7 +1,7 @@
-﻿using MarsRoverSample.Domain.Results;
+﻿using MarsRoverSample.Infrastructure.Results;
 using MarsRoverSample.Domain.Rovers.Inputs;
 using MarsRoverSample.Domain.Rovers.Validations;
-using MarsRoverSample.Domain.Validations;
+using MarsRoverSample.Infrastructure.Validations;
 using System.Collections.Generic;
 
 namespace MarsRoverSample.Domain.Rovers

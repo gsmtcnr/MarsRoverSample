@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MarsRoverSample.Domain.Results
+namespace MarsRoverSample.Infrastructure.Results
 {
     public interface IResult
     {

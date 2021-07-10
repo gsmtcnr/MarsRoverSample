@@ -1,6 +1,6 @@
 ﻿using MarsRoverSample.Domain.Directions;
 using MarsRoverSample.Domain.Plateaus;
-using MarsRoverSample.Domain.Results;
+using MarsRoverSample.Infrastructure.Results;
 using MarsRoverSample.Domain.Rovers.Enums;
 using MarsRoverSample.Domain.Rovers.Validations.Contants;
 using System.Collections.Generic;

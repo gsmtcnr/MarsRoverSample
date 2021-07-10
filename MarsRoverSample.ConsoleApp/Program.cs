@@ -1,9 +1,9 @@
 ﻿using MarsRoverSample.Domain.Directions;
 using MarsRoverSample.Domain.Plateaus;
 using MarsRoverSample.Domain.Positions;
-using MarsRoverSample.Domain.Results;
 using MarsRoverSample.Domain.Rovers;
 using MarsRoverSample.Domain.Rovers.Enums;
+using MarsRoverSample.Infrastructure.Results;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,11 +35,10 @@ namespace MarsRoverSample.ConsoleApp
                         {
                             if (count % 2 == 0)
                             {
-
                                 var roverInformation = line.Split(' ');
                                 int x = Convert.ToInt32(roverInformation[0]);
                                 int y = Convert.ToInt32(roverInformation[1]);
-                                IDirection direction = CreateDirection(roverInformation[2]);
+                                IDirection direction = DirectionFactory.CreateDirection(roverInformation[2]);
                                 roverResult = Rover.Create(new Domain.Rovers.Inputs.CreateInputModel
                                 {
                                     Name = Guid.NewGuid().ToString(),
@@ -54,8 +53,8 @@ namespace MarsRoverSample.ConsoleApp
                             {
                                 if (roverResult.IsSuccess)
                                 {
-                                    var rover = roverResult.Data;
-                                    var commandTypes = CreateCommandTypes(line);
+                                    var rover = roverResult.Data;                    
+                                    var commandTypes = CommandTypeCreator.CreateCommandTypes(line);
                                     var executeResult = rover.ExecuteCommand(commandTypes);
                                     if (executeResult.IsSuccess)
                                     {
@@ -65,7 +64,6 @@ namespace MarsRoverSample.ConsoleApp
                                     {
                                         HandleErrorMessages(executeResult.ErrorMessages);
                                     }
-                                 
                                 }
                                 else
                                 {
@@ -85,49 +83,6 @@ namespace MarsRoverSample.ConsoleApp
 
             Console.ReadLine();
         }
-
-        private static List<CommandType> CreateCommandTypes(string line)
-        {
-            List<CommandType> commandTypes = new List<CommandType>();
-            foreach (var command in line)
-            {
-                switch (command)
-                {
-                    case 'M':
-                        commandTypes.Add(CommandType.M);
-                        break;
-                    case 'R':
-                        commandTypes.Add(CommandType.R);
-                        break;
-                    case 'L':
-                        commandTypes.Add(CommandType.L);
-                        break;
-                }
-            }
-            return commandTypes;
-        }
-
-        private static IDirection CreateDirection(string directionVal)
-        {
-            IDirection direction = null;
-            switch (directionVal)
-            {
-                case "N":
-                    direction = new NorthDirection();
-                    break;
-                case "E":
-                    direction = new EastDirection();
-                    break;
-                case "W":
-                    direction = new WestDirection();
-                    break;
-                case "S":
-                    direction = new SouthDirection();
-                    break;
-            }
-            return direction;
-        }
-
         private static void HandleErrorMessages(List<string> messages)
         {
             Console.WriteLine("Error Messages : ");

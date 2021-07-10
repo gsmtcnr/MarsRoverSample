@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MarsRoverSample.Infrastructure\MarsRoverSample.Infrastructure.csproj" />
     <ProjectReference Include="..\projects\MarsRoverSample.Domain\MarsRoverSample.Domain.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,5 @@
 ﻿using MarsRoverSample.Domain.Positions;
-using MarsRoverSample.Domain.Results;
+using MarsRoverSample.Infrastructure.Results;
 
 namespace MarsRoverSample.Domain.Plateaus
 {

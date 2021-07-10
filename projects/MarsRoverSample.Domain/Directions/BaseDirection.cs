@@ -1,5 +1,5 @@
 ﻿using MarsRoverSample.Domain.Directions.Enums;
-using MarsRoverSample.Domain.Results;
+using MarsRoverSample.Infrastructure.Results;
 using MarsRoverSample.Domain.Rovers;
 
 namespace MarsRoverSample.Domain.Directions

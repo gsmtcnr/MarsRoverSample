@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MarsRoverSample.Domain.Results
+namespace MarsRoverSample.Infrastructure.Results
 {
     public abstract class BaseResult<T> : IResult<T>
      where T : class, new()

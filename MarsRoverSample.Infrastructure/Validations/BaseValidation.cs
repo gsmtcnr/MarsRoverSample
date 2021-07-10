@@ -1,6 +1,6 @@
-﻿using MarsRoverSample.Domain.Results;
+﻿using MarsRoverSample.Infrastructure.Results;
 
-namespace MarsRoverSample.Domain.Validations
+namespace MarsRoverSample.Infrastructure.Validations
 {
     public abstract class BaseValidation<T> : IValidation<T>
            where T : class, new()
