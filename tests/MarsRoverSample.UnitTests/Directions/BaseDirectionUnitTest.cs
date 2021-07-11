@@ -8,7 +8,7 @@ namespace MarsRoverSample.UnitTests.Directions
 {
     public abstract class BaseDirectionUnitTest
     {
-        public Rover Rover_Seed_Data(IDirection direction)
+        public Rover CreateSeedRoverData(IDirection direction)
         {
             int xCoordinate = 1;
             int yCoordinate = 2;

@@ -52,8 +52,6 @@ namespace MarsRoverSample.Domain.Rovers
             {
                 switch (commandType)
                 {
-
-
                     case CommandType.L:
                         Direction = Direction.Left();
                         break;

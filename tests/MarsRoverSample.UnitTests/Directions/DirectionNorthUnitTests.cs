@@ -15,7 +15,7 @@ namespace MarsRoverSample.UnitTests.Directions
         public DirectionNorthUnitTests()
         {
             //Arrange
-            _rover = Rover_Seed_Data(new NorthDirection());
+            _rover = CreateSeedRoverData(new NorthDirection());
 
         }
         #region Right
