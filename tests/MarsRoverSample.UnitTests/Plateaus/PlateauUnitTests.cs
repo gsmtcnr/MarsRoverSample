@@ -3,7 +3,7 @@ using MarsRoverSample.Domain.Positions;
 using Shouldly;
 using Xunit;
 
-namespace MarsRoverSample.UnitTests
+namespace MarsRoverSample.UnitTests.Plateaus
 {
 
     public class PlateauUnitTests
