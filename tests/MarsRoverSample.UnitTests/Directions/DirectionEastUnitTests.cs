@@ -14,6 +14,7 @@ namespace MarsRoverSample.UnitTests.Directions
 
         public DirectionEastUnitTests()
         {
+            //Arrange
             _rover = CreateSeedRoverData(new EastDirection());
 
         }
@@ -21,7 +22,7 @@ namespace MarsRoverSample.UnitTests.Directions
         [Fact]
         public void East_Direction_Turn_Right_Should_Be_Return_Success()
         {
-            //Arrange
+            
 
             //Act
 

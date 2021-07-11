@@ -72,9 +72,7 @@ namespace MarsRoverSample.Domain.Rovers
 
         public string ReportLocation()
         {
-            string reportFormat = "{0} rover ---  X Coordinate {1} - Y Coordinate {2} - Direction {3}";
-
-            return string.Format(reportFormat, Name, CurrentX, CurrentY, Direction.CurrentDirectionType);
+            return string.Format(RoverConstant.Report_Format, Name, CurrentX, CurrentY, Direction.CurrentDirectionType);
         }
 
         public virtual void SetCurrentX(int coordinate)

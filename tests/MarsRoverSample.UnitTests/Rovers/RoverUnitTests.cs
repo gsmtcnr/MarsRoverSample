@@ -1,15 +1,17 @@
 ﻿using MarsRoverSample.Domain.Directions;
+using MarsRoverSample.Domain.Directions.Enums;
 using MarsRoverSample.Domain.Plateaus;
 using MarsRoverSample.Domain.Positions;
 using MarsRoverSample.Domain.Rovers;
 using MarsRoverSample.Infrastructure.Validations;
 using Shouldly;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace MarsRoverSample.UnitTests.Rovers
 {
-    public class RoverUnitTests 
+    public class RoverUnitTests
     {
 
         #region Create
@@ -75,6 +77,112 @@ namespace MarsRoverSample.UnitTests.Rovers
             roverResult.ErrorMessages.Contains(ValidationConstant.Name_EmptyOrNull);
         }
 
+        #endregion
+
+        #region Report Location
+
+        [Fact]
+        public void Commands_After_ReportLocation_Should_Be_Return_Success()
+        {
+
+            //Arrange
+
+            int exceptedX = 1;
+            int exceptedY = 3;
+            DirectionType expectedDirectionTye = DirectionType.N;
+
+
+            int x = 1;
+            int y = 2;
+            var plateauResult = Plateau.Create(new Position(0, 0, 5, 5));
+            var roverResult = Rover.Create(new Domain.Rovers.Inputs.CreateInputModel
+            {
+                Name = Guid.NewGuid().ToString(),
+                CoordinateX = x,
+                CoordinateY = y,
+                Direction = new NorthDirection(),
+                Plateau = plateauResult.Data
+            });
+
+            string expectedReportLocation = string.Format(RoverConstant.Report_Format, roverResult.Data.Name, exceptedX, exceptedY, expectedDirectionTye);
+
+            var commandList = new List<Domain.Rovers.Enums.CommandType>
+                    {
+                         Domain.Rovers.Enums.CommandType.L,
+                         Domain.Rovers.Enums.CommandType.M,
+                         Domain.Rovers.Enums.CommandType.L,
+                         Domain.Rovers.Enums.CommandType.M,
+                         Domain.Rovers.Enums.CommandType.L,
+                         Domain.Rovers.Enums.CommandType.M,
+                         Domain.Rovers.Enums.CommandType.L,
+                         Domain.Rovers.Enums.CommandType.M,
+                         Domain.Rovers.Enums.CommandType.M
+                    };
+
+            //Act
+
+            roverResult.Data.ExecuteCommand(commandList);
+            string reportLocation = roverResult.Data.ReportLocation();
+
+            //Assert
+
+            roverResult.IsSuccess.ShouldBeTrue();
+            roverResult.ErrorMessages.ShouldBeNull();
+            reportLocation.ShouldBe(expectedReportLocation);
+
+        }
+
+        [Fact]
+        public void Commands_After_ReportLocation_Should_Be_Return_Fail()
+        {
+
+            //Arrange
+
+            int exceptedX = 1;
+            int exceptedY = 3;
+            DirectionType expectedDirectionTye = DirectionType.N;
+
+
+            int x = 1;
+            int y = 2;
+            var plateauResult = Plateau.Create(new Position(0, 0, 5, 5));
+            var roverResult = Rover.Create(new Domain.Rovers.Inputs.CreateInputModel
+            {
+                Name = Guid.NewGuid().ToString(),
+                CoordinateX = x,
+                CoordinateY = y,
+                Direction = new SouthDirection(),
+                Plateau = plateauResult.Data
+            });
+
+            string expectedReportLocation = string.Format(RoverConstant.Report_Format, roverResult.Data.Name, exceptedX, exceptedY, expectedDirectionTye);
+
+            var commandList = new List<Domain.Rovers.Enums.CommandType>
+                    {
+                         Domain.Rovers.Enums.CommandType.L,
+                         Domain.Rovers.Enums.CommandType.M,
+                         Domain.Rovers.Enums.CommandType.L,
+                         Domain.Rovers.Enums.CommandType.M,
+                         Domain.Rovers.Enums.CommandType.L,
+                         Domain.Rovers.Enums.CommandType.M,
+                         Domain.Rovers.Enums.CommandType.L,
+                         Domain.Rovers.Enums.CommandType.M,
+                         Domain.Rovers.Enums.CommandType.M
+                    };
+
+            //Act
+
+            roverResult.Data.ExecuteCommand(commandList);
+            string reportLocation = roverResult.Data.ReportLocation();
+
+            //Assert
+
+            roverResult.IsSuccess.ShouldBeTrue();
+            roverResult.ErrorMessages.ShouldBeNull();
+    
+            reportLocation.ShouldNotBe(expectedReportLocation);
+
+        }
         #endregion
     }
 }
